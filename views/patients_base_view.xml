@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--  THIS IS THE TREE VIEW OF THE PATIENTS          -->
+        <record id="patients_tree_view" model="ir.ui.view">
+            <field name="name">patients.tree.view</field>
+            <field name="model">patient.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phoneno"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--  THIS IS THE FORM VIEW OF THE PATIENTS          -->
+        <record id="patients_form_view" model="ir.ui.view">
+            <field name="name">patients.form.view</field>
+            <field name="model">patient.patient</field>
+            <field name="arch" type="xml">
+                <form string="patients">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="phoneno"/>
+                                <field name="address"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- this is for THE MENU ACTION  -->
+        <record id="patients_menu_action" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="res_model">patient.patient</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create The First Patients</p>
+            </field>
+        </record>
+
+        <!-- THIS IS HSOW THE MENU IN THE MAIN   -->
+        <menuitem id="hospital_main_menu" name="Hospital Management"/>
+        <!--        This is to show the menu inside the main menu-->
+        <menuitem action="patients_menu_action" id="patients_menu" name="Patients" sequence="1"
+                  parent="hospital_main_menu"/>
+    </data>
+</odoo>
